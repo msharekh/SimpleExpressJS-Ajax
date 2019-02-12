@@ -10,38 +10,34 @@
     <script>
       $(document).ready(function() {
         $('button').click(function() {
-          setTimeoutAgain();
-
+          //setTimeoutAgain();
           let url = '/addBlock';
           let data = { fname: 'ABC', lname: '1234' };
           let dataType = 'json';
+          let s = 0;
           $.ajax({
             type: 'POST',
             url: url,
             data: data,
             success: function(result) {
-              // function setTimeoutAgain() {
-              //   var t = setTimeout(function() {
-              //     console.log('test');
-              //     setTimeoutAgain();
-              //   }, 100);
-              // }
+              setTimeoutAgain();
+              //doSomthing('no frm fucnt');
             },
             dataType: dataType
           });
+          var setTimeoutAgain = function() {
+            var t = setTimeout(function() {
+              s++;
+              console.log('test s:', s);
+              doSomthing('s:' + s);
+              setTimeoutAgain();
+            }, 500);
+          };
+          var doSomthing = function(txt) {
+            $('#div1').html(txt);
+          };
         });
       });
-
-      function setTimeoutAgain() {
-        var t = setTimeout(function() {
-          console.log('test');
-
-          setTimeoutAgain();
-        }, 100);
-      }
-      function doSomthing(txt) {
-        $('#div1').html(txt);
-      }
     </script>
     <script src="main.js"></script>
   </head>
