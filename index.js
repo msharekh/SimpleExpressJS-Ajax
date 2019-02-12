@@ -21,12 +21,13 @@ app.post('/addBlock', function(req, res) {
   let fn = r.fname;
   let ln = r.lname;
   console.log(`fn = ${fn} and ln = ${ln}`);
+  //return 'good...';
   res.send(r);
 });
 
-app.post('/addData', (req, res) => {
-  console.log(JSON.stringify(res));
-  res.send(JSON.stringify(res));
-});
+// app.post('/addData', (req, res) => {
+//   console.log(JSON.stringify(res));
+//   res.send(JSON.stringify(res));
+// });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

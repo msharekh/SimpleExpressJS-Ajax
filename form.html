@@ -6,6 +6,43 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('button').click(function() {
+          setTimeoutAgain();
+
+          let url = '/addBlock';
+          let data = { fname: 'ABC', lname: '1234' };
+          let dataType = 'json';
+          $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result) {
+              // function setTimeoutAgain() {
+              //   var t = setTimeout(function() {
+              //     console.log('test');
+              //     setTimeoutAgain();
+              //   }, 100);
+              // }
+            },
+            dataType: dataType
+          });
+        });
+      });
+
+      function setTimeoutAgain() {
+        var t = setTimeout(function() {
+          console.log('test');
+
+          setTimeoutAgain();
+        }, 100);
+      }
+      function doSomthing(txt) {
+        $('#div1').html(txt);
+      }
+    </script>
     <script src="main.js"></script>
   </head>
   <body>
@@ -20,5 +57,9 @@
       Last name: <input type="text" name="lname" /><br />
       <input type="submit" value="Submit" />
     </form>
+
+    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+    <button>Get External Content</button>
   </body>
 </html>
